@@ -1,0 +1,47 @@
+package object Derivacion {
+  def derivada(f: Double => Double): Double => Double = {
+
+    def calcularDerivada(x: Double): Double = {
+      val h = 0.1
+      (f(x - 2 * h) - 8 * f(x - h) + 8 * f(x + h) - f(x + 2 * h)) / (12 * h)
+    }
+    calcularDerivada
+  }
+
+  //forma anonima
+
+  def derivada2(f: Double => Double): Double => Double = { x =>
+    val h = 0.1
+    (f(x - 2 * h) - 8 * f(x - h) + 8 * f(x + h) - f(x + 2 * h)) / (12 * h)
+  }
+
+  def derivadaSuma(f: Double => Double, g: Double => Double): Double => Double = {
+
+    def calcularSumaDerivada(x: Double): Double = derivada(f)(x) + derivada(g)(x)
+
+    calcularSumaDerivada
+  }
+
+  def derivadaResta(f: Double => Double, g: Double => Double): Double => Double = {
+
+    def calcularRestaDerivada(x: Double): Double = derivada(f)(x) - derivada(g)(x)
+
+    calcularRestaDerivada
+  }
+
+  def derivadaMult(f: Double => Double, g: Double => Double): Double => Double = {
+
+    def calcularMultiplicacionDerivada(x: Double): Double =
+      derivada(f)(x) * g(x) + f(x) * derivada(g)(x)
+
+    calcularMultiplicacionDerivada
+  }
+
+  def derivadaDiv(f: Double => Double, g: Double => Double): Double => Double = {
+
+    def calcularDivisionDerivada(x: Double): Double =
+      (derivada(f)(x) * g(x) - f(x) * derivada(g)(x)) / (g(x) * g(x))
+
+    calcularDivisionDerivada
+  }
+}
