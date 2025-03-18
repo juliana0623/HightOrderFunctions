@@ -10,16 +10,13 @@ package object Derivacion {
 
   //forma anonima
 
-  def derivada2(f: Double => Double): Double => Double = { x =>
+  def derivada2(f: Double => Double): Double => Double = { (x: Double) =>
     val h = 0.1
     (f(x - 2 * h) - 8 * f(x - h) + 8 * f(x + h) - f(x + 2 * h)) / (12 * h)
   }
 
-  def derivadaSuma(f: Double => Double, g: Double => Double): Double => Double = {
-
-    def calcularSumaDerivada(x: Double): Double = derivada(f)(x) + derivada(g)(x)
-
-    calcularSumaDerivada
+  def derivadaSuma(f: Double => Double, g: Double => Double): Double => Double = { (x:Double) =>
+    derivada(f)(x) + derivada(g)(x)
   }
 
   def derivadaResta(f: Double => Double, g: Double => Double): Double => Double = {
