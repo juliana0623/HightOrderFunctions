@@ -20,6 +20,7 @@ derivada(f6)(1)
 derivada(f7)(1)
 derivada(f8)(4)
 
+derivadaSuma(derivadaSuma(f1,f2),f3)(1)
 
 
 
